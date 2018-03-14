@@ -30,14 +30,14 @@ yarn add ngx-barcode-input
 And on your application module:
 
 ```ts
-import { ngBarcodeInputModule } from 'ngx-barcode-input';
+import { NgxBarcodeInputModule } from 'ngx-barcode-input';
 
 @NgModule({
   declarations: [ ...],
   imports: [
     BrowserModule,
     ....,
-     ngBarcodeInputModule
+     NgxBarcodeInputModule
 ],
 })
 export class AppModule { }
