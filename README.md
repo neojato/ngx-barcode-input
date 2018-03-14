@@ -8,8 +8,7 @@ This module contains an Angular input box component with a button that allows to
 - There is no need to include a component-specific external stylesheet, only the Font Awesome stylesheet
 - As the input component takes a plain input and projects it, this means that by design the component supports all standard HTML input attributes, including custom attributes (data-), all the accessiblity properties, etc.
 - This also means that these components are compatible with Angular Forms 
-- This repo is based on the [angular-quickstart-lib](https://github.com/filipesilva/angular-quickstart-lib), 
-which is a seed repo (under development) for a library in the [Angular Package Format v4.0](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit#heading=h.k0mh3o8u5hx).
+- This repo is designed as a library in the [Angular Package Format v4.0](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit#heading=h.k0mh3o8u5hx).
 - This means that this module is compatible with AOT, and includes UMD bundles for use with SystemJs
 
 
