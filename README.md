@@ -47,13 +47,7 @@ See below for SystemJs / UMD installation.
 
 # Using the Barcode Input
 
-We will need to add first a version of Font Awesome to our page, for example:
-
-```html
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-```
-
-Then we can use the Barcode Input like this:
+Use the Barcode Input like this:
 
 ```html
 <ngx-barcode-input>
