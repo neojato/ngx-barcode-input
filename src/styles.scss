@@ -1,2 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+#interactive.viewport {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+#interactive.viewport>canvas,
+#interactive.viewport>video {
+  max-width: 100%;
+  width: 100%;
+}
+
+canvas.drawing,
+canvas.drawingBuffer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

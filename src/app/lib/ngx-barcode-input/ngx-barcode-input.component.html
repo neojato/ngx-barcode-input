@@ -1,3 +1,22 @@
 <ng-content></ng-content>
 
-<button>Scan</button>
+<span *ngIf="isMobile && hasCamera">
+  <button (click)="startScanner(barcodeTemplate)">Scan</button>
+</span>
+
+<ng-template #barcodeTemplate>
+  <div class="modal-header">
+    <h5 class="modal-title">Scanning Barcode</h5>
+    <button type="button" class="close" (click)="stopScanner()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <div id="barcodeInput" style="position: static;">
+      <div id="interactive" class="viewport clearfix"></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="stopScanner()">Close</button>
+  </div>
+</ng-template>

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Barcode Scanner Input</h1>
+  <h1>{{ title }}</h1>
 
   <div class="form">
 
@@ -11,7 +11,7 @@
     <div class="form-row">
       <label>Barcode Input:</label>
       <ngx-barcode-input>
-        <input type="text" name="barcode" placeholder="Barcode Input" autocomplete="off">
+        <input type="text" name="barcode" [(ngModel)]="barcode" placeholder="Barcode Input" autocomplete="off">
       </ngx-barcode-input>
     </div>
 
