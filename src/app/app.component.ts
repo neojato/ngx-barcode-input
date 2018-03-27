@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Ngx Barcode Scanner Input';
+  title = 'Ngx Barcode Input';
   barcode = '';
 }
