@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit, AfterContentInit, ContentChild, TemplateRef } from '@angular/core';
 import { InputRefDirective } from './../common/input-ref.directive';
+import { ChangeDetectorRef, Component, OnInit, ContentChild, TemplateRef } from '@angular/core';
 import * as Quagga from 'Quagga';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -10,12 +10,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   templateUrl: './ngx-barcode-input.component.html',
   styleUrls: ['./ngx-barcode-input.component.scss']
 })
-export class NgxBarcodeInputComponent implements OnInit, AfterContentInit {
+export class NgxBarcodeInputComponent implements OnInit {
 
   @ContentChild(InputRefDirective)
   input: InputRefDirective;
 
-  public isMobile: boolean;
+  public isiOS: boolean;
   public hasCamera: boolean;
   public barcode: string;
   public configQuagga: any;
@@ -28,9 +28,8 @@ export class NgxBarcodeInputComponent implements OnInit, AfterContentInit {
   ) { }
 
   ngOnInit() {
-    this.isMobile = window.matchMedia('only screen and (max-width: 760px)').matches;
-    this.hasCamera = (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function');
-
+    this.hasCamera = 'mediaDevices' in navigator;
+    this.isiOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
     this.barcode = '';
 
     this.configQuagga = {
@@ -41,9 +40,10 @@ export class NgxBarcodeInputComponent implements OnInit, AfterContentInit {
         constraints: {
           width: { max: 550 },
           height: { max: 300 },
-          aspectRatio: { min: 1, max: 2 },
+          aspectRatio: { min: 1, max: 10 },
           facingMode: 'environment', // or user
-        }
+        },
+        singleChannel: false // true: only the red color-channel is read
       },
       locator: {
         patchSize: 'medium',
@@ -53,14 +53,9 @@ export class NgxBarcodeInputComponent implements OnInit, AfterContentInit {
       numOfWorkers: navigator.hardwareConcurrency,
       decoder: {
         readers: ['code_128_reader']
-      }
+      },
+      src: null
     };
-  }
-
-  ngAfterContentInit() {
-    if (!this.input) {
-      console.error('the ngx-barcode-input component needs an input inside its content');
-    }
   }
 
   startScanner(template: TemplateRef<any>) {
@@ -96,7 +91,7 @@ export class NgxBarcodeInputComponent implements OnInit, AfterContentInit {
 
     if (result) {
       if (result.boxes) {
-        drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute('width'), 10), parseInt(drawingCanvas.getAttribute('height'), 10));
+        drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute('width')), parseInt(drawingCanvas.getAttribute('height')));
         result.boxes.filter(function (box) {
           return box !== result.box;
         }).forEach(function (box) {
@@ -122,6 +117,45 @@ export class NgxBarcodeInputComponent implements OnInit, AfterContentInit {
       console.log(this.barcode);
       this.stopScanner();
     }
+  }
+
+  onChange(e) {
+    if (e.target.files && e.target.files.length) {
+
+      Quagga.onProcessed((result) => this.onProcessed(result));
+
+      Quagga.onDetected((result) => this.detectedBarcode(result));
+
+      this.onDecodeSingle(URL.createObjectURL(e.target.files[0]));
+    }
+  }
+
+  onDecodeSingle(img_src) {
+    const config = {
+      locate: true,
+      locator: {
+        patchSize: 'medium',
+        halfSample: true
+      },
+      decoder: {
+        readers: ['code_128_reader']
+      },
+      src: img_src
+    };
+
+    // Promisify DecodeSingle method from Quagga
+    return new Promise((resolve, reject) => {
+      Quagga.decodeSingle(config, result => {
+        if (!result || typeof result.codeResult === 'undefined') {
+          reject('File Cannot be Decode, Please Try a Valid Barcode;');
+        }
+        resolve(result.codeResult.code);
+      });
+    });
+  }
+
+  detectedBarcode(result) {
+    this.barcode = result.codeResult.code;
   }
 
 }

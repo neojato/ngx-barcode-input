@@ -1,10 +1,21 @@
-<ng-content></ng-content>
+<div style="float: left;">
+  <input type="text" name="barcode" ([ngModel])="barcode" [value]="barcode" placeholder="Barcode Input" autocomplete="off">
 
-<span *ngIf="isMobile && hasCamera">
-  <button (click)="startScanner(barcodeTemplate)">Scan</button>
-</span>
+  <!-- <span *ngIf="hasCamera">
+    <button (click)="startScanner(barcodeTemplate)">Scan barcode</button>
+  </span> -->
 
-<ng-template #barcodeTemplate>
+  <!-- <span *ngIf="isiOS && !hasCamera"> -->
+    <input type="file" id="file" name="file" class="inputfile" accept="image/*" capture="environment" (change)="onChange($event)">
+    <button type="button" style="padding: 4px 4px 0 4px; line-height: 1em;"><label for="file"><span>Take a photo</span></label></button>
+  <!-- </span> -->
+</div>
+<!-- <span *ngIf="isiOS && !hasCamera"> -->
+  <div style="clear: both;"></div>
+  <div id="interactive" class="viewport"></div>
+<!-- </span> -->
+
+<!-- <ng-template #barcodeTemplate>
   <div class="modal-header">
     <h5 class="modal-title">Scanning Barcode</h5>
     <button type="button" class="close" (click)="stopScanner()" aria-label="Close">
@@ -19,4 +30,4 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="stopScanner()">Close</button>
   </div>
-</ng-template>
+</ng-template> -->

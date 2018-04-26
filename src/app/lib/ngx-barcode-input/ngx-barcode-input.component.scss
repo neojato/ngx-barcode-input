@@ -1,0 +1,29 @@
+#interactive.viewport {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  padding-top: 15px;
+}
+
+#interactive.viewport canvas, video {
+  margin-top: -50px;
+  width: 300px;
+  height: 400px;
+}
+
+#interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+  margin-left: -300px;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + button, .inputfile + label {
+	cursor: pointer;
+}
