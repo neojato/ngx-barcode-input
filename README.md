@@ -11,6 +11,9 @@ This module contains an Angular input box component with a button that allows to
 - This repo is designed as a library in the [Angular Package Format v4.0](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit#heading=h.k0mh3o8u5hx).
 - This means that this module is compatible with AOT, and includes UMD bundles for use with SystemJs
 
+# Demo
+
+https://ngxbarcodeinput.firebaseapp.com/
 
 # Installation
 
