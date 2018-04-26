@@ -4,8 +4,8 @@ This module contains an Angular input box component with a button that allows to
 
 ### Features:
 
-- The component has minimum styling
-- There is no need to include a component-specific external stylesheet, only the Font Awesome stylesheet
+- The component has minimal styling
+- There is no need to include a component-specific external stylesheet
 - As the input component takes a plain input and projects it, this means that by design the component supports all standard HTML input attributes, including custom attributes (data-), all the accessiblity properties, etc.
 - This also means that these components are compatible with Angular Forms 
 - This repo is designed as a library in the [Angular Package Format v4.0](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit#heading=h.k0mh3o8u5hx).
@@ -53,9 +53,10 @@ See below for SystemJs / UMD installation.
 Use the Barcode Input like this:
 
 ```html
-<ngx-barcode-input>
-    <input type="text" name="barcode" placeholder="Barcode" autocomplete="off" class="some-class">
-</ngx-barcode-input>
+<div class="form-row">
+  <label>Barcode Input:</label>
+  <ngx-barcode-input></ngx-barcode-input>
+</div>
 ```
 
         
@@ -66,30 +67,14 @@ This command will build and start the demo application:
 npm start
 ```
 
-
-# Running This Module In Development
-
-First let's build the library using this command:
+# Building Module for Production
+These commands will build, package, and deploy for NPM
 
 ```bash
 npm run build
+npm run packagr
+npm publish dist
 ```
-
-     
-Then let's link it:
-
-```bash
-cd dist
-npm link
-```
-
-
-On another folder on the same machine where we have for example a running Angular CLI, we then do:
-
-```bash
-npm link ngx-barcode-input
-```
-
 
 # Running the Tests 
 
@@ -106,7 +91,6 @@ Make sure to add this to your `map` configuration, if you need the module served
 
 ```javascript
 map: {
-
    ...
    'ngx-barcode-input': 'https://unpkg.com/ngx-barcode-input@<version number>/ngx-barcode-input.umd.min.js'
 }
