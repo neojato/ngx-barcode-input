@@ -27,3 +27,10 @@
 .inputfile + button, .inputfile + label {
 	cursor: pointer;
 }
+
+.photoButton {
+  vertical-align: bottom;
+  margin-left: 4px;
+  padding: 4px 4px 0 4px;
+  line-height: 1em;
+}

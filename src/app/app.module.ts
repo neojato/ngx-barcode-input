@@ -1,6 +1,6 @@
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
-import {NgxBarcodeInputModule} from './lib/ngx-barcode-input.module';
+import {NgxBarcodeInputModule} from 'ngx-barcode-input';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 

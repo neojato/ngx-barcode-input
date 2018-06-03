@@ -1,5 +1,5 @@
-import {InputRefDirective} from './../common/input-ref.directive';
-import {ChangeDetectorRef, Component, OnInit, ContentChild, TemplateRef} from '@angular/core';
+import {InputRefDirective} from '../common/input-ref.directive';
+import {Component, OnInit, ContentChild} from '@angular/core';
 import * as Quagga from 'quagga';
 
 @Component({
@@ -14,7 +14,7 @@ export class NgxBarcodeInputComponent implements OnInit {
 
   public barcode = '';
 
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor() { }
 
   ngOnInit() { }
 
@@ -24,7 +24,9 @@ export class NgxBarcodeInputComponent implements OnInit {
 
     if (result) {
       if (result.boxes) {
-        drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute('width')), parseInt(drawingCanvas.getAttribute('height')));
+        drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute('width')),
+          parseInt(drawingCanvas.getAttribute('height')));
+
         result.boxes.filter(function (box) {
           return box !== result.box;
         }).forEach(function (box) {
