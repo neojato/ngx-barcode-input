@@ -2,18 +2,27 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
-    "baseUrl": "./",
+    "baseUrl": "",
+    "target": "es5",
     "module": "commonjs",
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "ngx-barcode-input": ["../dist/ngx-barcode-input"]
+    }
   },
   "files": [
-    "test.ts"
+    "test.ts",
+    "polyfills.ts"
   ],
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tmp"
   ]
 }

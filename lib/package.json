@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "name": "ngx-barcode-input",
+  "version": "0.1.6",
+  "license": "MIT",
+  "repository": "https://github.com/neojato/ngx-barcode-input",
+  "peerDepenencies": {
+    "@angular/common": ">=5",
+    "@angular/core": ">=5",
+    "quagga": "^0.12.1"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts",
+      "umdModuleIds": {
+        "quagga": "quagga"
+      }
+    },
+    "dest": "../dist/ngx-barcode-input"
+  }
+}

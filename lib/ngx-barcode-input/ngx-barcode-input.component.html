@@ -1,0 +1,12 @@
+<div style="float: left;">
+  <input type="text" name="barcode" ([ngModel])="barcode" [value]="barcode" placeholder="Barcode Input"
+         autocomplete="off">
+  <input type="file" id="file" name="file" class="inputfile" accept="image/*" capture="environment"
+         (change)="onChange($event)">
+  <button class="photoButton" type="button">
+    <label for="file"><span>Take a photo</span></label>
+  </button>
+</div>
+
+<div style="clear: both;"></div>
+<div id="interactive" class="viewport"></div>

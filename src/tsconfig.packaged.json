@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "angularCompilerOptions": {
     "paths": {
-      "ngx-barcode-input": ["../lib/index.ts"]
+      "ngx-barcode-input": ["../dist/ngx-barcode-input"]
     }
   },
   "compilerOptions": {
@@ -11,7 +11,7 @@
     "baseUrl": "",
     "types": [],
     "paths": {
-      "ngx-barcode-input": ["../lib/index.ts"]
+      "ngx-barcode-input": ["../dist/ngx-barcode-input"]
     }
   },
   "exclude": [
